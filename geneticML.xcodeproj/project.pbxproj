@@ -1,0 +1,341 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AA4D382421992ADF00F159F2 /* libBLAS.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA4D382021992A7100F159F2 /* libBLAS.dylib */; };
+		AA7C14982199037F00C76265 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA7C14972199037F00C76265 /* main.cpp */; };
+		AA7C14B92199045E00C76265 /* util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AA7C14B42199045E00C76265 /* util.cpp */; };
+		AA7C14BD2199285D00C76265 /* libmlpack.3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AA7C14BB2199280100C76265 /* libmlpack.3.0.dylib */; };
+		AAA3FFE921992BC200012FBC /* libarmadillo.9.10.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA3FFE821992BC200012FBC /* libarmadillo.9.10.5.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AA7C14922199037F00C76265 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AA4D382021992A7100F159F2 /* libBLAS.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libBLAS.dylib; path = ../../../../System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib; sourceTree = "<group>"; };
+		AA7C14942199037F00C76265 /* geneticML */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = geneticML; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA7C14972199037F00C76265 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		AA7C149F2199045B00C76265 /* userRNG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userRNG.h; sourceTree = "<group>"; };
+		AA7C14A02199045B00C76265 /* trainData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = trainData.json; sourceTree = "<group>"; };
+		AA7C14AD2199045D00C76265 /* organism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = organism.h; sourceTree = "<group>"; };
+		AA7C14AE2199045D00C76265 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		AA7C14B32199045E00C76265 /* geneticAlgoTrainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = geneticAlgoTrainer.h; sourceTree = "<group>"; };
+		AA7C14B42199045E00C76265 /* util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = util.cpp; sourceTree = "<group>"; };
+		AA7C14B52199045E00C76265 /* testData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testData.json; sourceTree = "<group>"; };
+		AA7C14BB2199280100C76265 /* libmlpack.3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmlpack.3.0.dylib; path = ../../../../usr/local/lib/libmlpack.3.0.dylib; sourceTree = "<group>"; };
+		AAA3FFE821992BC200012FBC /* libarmadillo.9.10.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libarmadillo.9.10.5.dylib; path = ../../../../usr/local/Cellar/armadillo/9.100.5_1/lib/libarmadillo.9.10.5.dylib; sourceTree = "<group>"; };
+		AAA3FFEA219A295B00012FBC /* ctpl_stl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ctpl_stl.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA7C14912199037F00C76265 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAA3FFE921992BC200012FBC /* libarmadillo.9.10.5.dylib in Frameworks */,
+				AA4D382421992ADF00F159F2 /* libBLAS.dylib in Frameworks */,
+				AA7C14BD2199285D00C76265 /* libmlpack.3.0.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA7C148B2199037F00C76265 = {
+			isa = PBXGroup;
+			children = (
+				AA7C14962199037F00C76265 /* geneticML */,
+				AA7C14952199037F00C76265 /* Products */,
+				AA7C14BA2199280100C76265 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		AA7C14952199037F00C76265 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA7C14942199037F00C76265 /* geneticML */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AA7C14962199037F00C76265 /* geneticML */ = {
+			isa = PBXGroup;
+			children = (
+				AA7C14B32199045E00C76265 /* geneticAlgoTrainer.h */,
+				AA7C14AD2199045D00C76265 /* organism.h */,
+				AA7C14B52199045E00C76265 /* testData.json */,
+				AA7C14A02199045B00C76265 /* trainData.json */,
+				AA7C149F2199045B00C76265 /* userRNG.h */,
+				AA7C14B42199045E00C76265 /* util.cpp */,
+				AA7C14AE2199045D00C76265 /* util.h */,
+				AA7C14972199037F00C76265 /* main.cpp */,
+				AAA3FFEA219A295B00012FBC /* ctpl_stl.h */,
+			);
+			path = geneticML;
+			sourceTree = "<group>";
+		};
+		AA7C14BA2199280100C76265 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AAA3FFE821992BC200012FBC /* libarmadillo.9.10.5.dylib */,
+				AA4D382021992A7100F159F2 /* libBLAS.dylib */,
+				AA7C14BB2199280100C76265 /* libmlpack.3.0.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA7C14932199037F00C76265 /* geneticML */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA7C149B2199037F00C76265 /* Build configuration list for PBXNativeTarget "geneticML" */;
+			buildPhases = (
+				AA7C14902199037F00C76265 /* Sources */,
+				AA7C14912199037F00C76265 /* Frameworks */,
+				AA7C14922199037F00C76265 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = geneticML;
+			productName = geneticML;
+			productReference = AA7C14942199037F00C76265 /* geneticML */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA7C148C2199037F00C76265 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "Tim Gendron";
+				TargetAttributes = {
+					AA7C14932199037F00C76265 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = AA7C148F2199037F00C76265 /* Build configuration list for PBXProject "geneticML" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = AA7C148B2199037F00C76265;
+			productRefGroup = AA7C14952199037F00C76265 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA7C14932199037F00C76265 /* geneticML */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA7C14902199037F00C76265 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA7C14982199037F00C76265 /* main.cpp in Sources */,
+				AA7C14B92199045E00C76265 /* util.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AA7C14992199037F00C76265 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		AA7C149A2199037F00C76265 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		AA7C149C2199037F00C76265 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/Cellar/boost/1.67.0_1/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A",
+					/usr/local/Cellar/armadillo/9.100.5_1/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Debug;
+		};
+		AA7C149D2199037F00C76265 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/Cellar/boost/1.67.0_1/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SYSTEM_LIBRARY_DIR)/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A",
+					/usr/local/Cellar/armadillo/9.100.5_1/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA7C148F2199037F00C76265 /* Build configuration list for PBXProject "geneticML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA7C14992199037F00C76265 /* Debug */,
+				AA7C149A2199037F00C76265 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA7C149B2199037F00C76265 /* Build configuration list for PBXNativeTarget "geneticML" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA7C149C2199037F00C76265 /* Debug */,
+				AA7C149D2199037F00C76265 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA7C148C2199037F00C76265 /* Project object */;
+}
