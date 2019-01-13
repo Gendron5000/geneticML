@@ -24,12 +24,88 @@
 #include <mlpack/methods/ann/layer/concat.hpp>
 #include <mlpack/methods/ann/layer/atrous_convolution.hpp>
 
-
 #include <functional>
 
 using namespace mlpack::ann;
 
 using RnnType = RNN<SigmoidLayer<>>;
+
+class SudokuSolution
+{
+using DataType = arma::Mat<int>;
+public:
+	DataType& Parameters() { return solution; }
+	SudokuSolution() 
+	{
+		solution = DataType(9, 9);
+	}
+
+private:
+	DataType solution;
+};
+
+void RunSudoku()
+{
+	auto createWeights = [] ()
+	{
+		return new SudokuSolution();
+	};
+
+	auto calculateFitness = [] (SudokuSolution& in_solution)
+	{
+		double retFitness = 0.0;
+		auto& cells = in_solution.Parameters();
+		std::set<int> uniqueValues;
+
+		for (int i = 0; i < 9; i++)
+		{
+
+			for (auto& it : cells.row(i))
+			{
+				uniqueValues.insert(it);
+			}
+			//todo perf test with loop configs
+
+			retFitness += uniqueValues.size();
+
+			uniqueValues.clear();
+
+			for (auto& it : cells.col(i))
+			{
+				uniqueValues.insert(it);
+			}
+
+			retFitness += uniqueValues.size();
+			uniqueValues.clear();
+		}
+
+		for (int j = 0; j < 3; j++)
+		{
+			for (int k = 0; k < 3; k++)
+			{
+				arma::subview<int> square = cells.submat(j*3, k*3, arma::SizeMat(3, 3));
+
+				for (auto& it : square)
+				{
+					uniqueValues.insert(it);
+				}
+                
+                retFitness += uniqueValues.size();
+                uniqueValues.clear();
+			}
+		}
+
+		return retFitness;
+	};
+
+    GeneticAlgoTrainer trainer(createWeights, calculateFitness);
+	auto& settings = trainer.GetSettings();
+	settings.minWeight = 1;
+	settings.maxWeight = 9;
+    settings.numEpoch = 100000;
+	settings.useIntType = true;
+    trainer.Run();
+}
 
 int main()
 {
@@ -67,7 +143,7 @@ int main()
         arma::cube prediction;
         in_rnn.Predict(*dataToUse, prediction, 1);
         
-        long long  predictSize = arma::size(prediction)[1];
+        long long predictSize = arma::size(prediction)[1];
         double normalizedActualCost = 0.0;
         bool readyToBuy = true;
         
@@ -103,10 +179,15 @@ int main()
     
     //GeneticAlgoTrainer<std::function<RnnType*()>, std::function<double(RnnType&, bool)>> trainer((std::function<RnnType*()>(createRNN)), std::function<double(RnnType&, bool)>(calculateFitness));
     GeneticAlgoTrainer trainer(createRNN, calculateFitness);
+	auto settings = trainer.GetSettings();
+	settings.minWeight = -2.0;
+	settings.maxWeight = 2.0;
     trainer.Run();
     
     Log ("fitness from training data:", calculateFitness(*trainer.GetBestPerformer()) );
     dataToUse = &testData;
     Log ("fitness from test data: ", calculateFitness(*trainer.GetBestPerformer()) );
+
+	return 1;
 }
 

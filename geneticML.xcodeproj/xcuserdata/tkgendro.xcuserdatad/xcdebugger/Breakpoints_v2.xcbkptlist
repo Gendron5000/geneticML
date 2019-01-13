@@ -2,4 +2,116 @@
 <Bucket
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "geneticML/main.cpp"
+            timestampString = "569087382.3213331"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "RunSudoku()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "geneticML/main.cpp"
+            timestampString = "569087382.321876"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "RunSudoku()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "geneticML/organism.h"
+            timestampString = "564092778.710608"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "RandomizeWeights()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_ZN8OrganismI14SudokuSolutionZN7UserRNG8GetRngFnIdNSt3__125uniform_real_distributionIdEEJRdS6_EEEDaDpOT1_EUlvE_ZNS2_IiNS3_24uniform_int_distributionIiEEJRiSE_EEES7_SA_EUlvE_E16RandomizeWeightsEv"
+                  moduleName = "geneticML"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tkgendro/projects/geneticML/geneticML/organism.h"
+                  timestampString = "564092566.733749"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_ZN8OrganismI14SudokuSolutionZN7UserRNG8GetRngFnIdNSt3__125uniform_real_distributionIdEEJRdS6_EEEDaDpOT1_EUlvE_SB_E16RandomizeWeightsEv"
+                  moduleName = "geneticML"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tkgendro/projects/geneticML/geneticML/organism.h"
+                  timestampString = "564092566.736197"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "114">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_ZN8OrganismIN6mlpack3ann3RNNINS1_9BaseLayerINS1_16LogisticFunctionEN4arma3MatIdEES7_EENS1_20RandomInitializationEJEEEZN7UserRNG8GetRngFnIdNSt3__125uniform_real_distributionIdEEJRdSG_EEEDaDpOT1_EUlvE_ZNSC_IiNSD_24uniform_int_distributionIiEEJRiSO_EEESH_SK_EUlvE_E16RandomizeWeightsEv"
+                  moduleName = "geneticML"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tkgendro/projects/geneticML/geneticML/organism.h"
+                  timestampString = "564092566.7383209"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "_ZN8OrganismIN6mlpack3ann3RNNINS1_9BaseLayerINS1_16LogisticFunctionEN4arma3MatIdEES7_EENS1_20RandomInitializationEJEEEZN7UserRNG8GetRngFnIdNSt3__125uniform_real_distributionIdEEJRdSG_EEEDaDpOT1_EUlvE_SL_E16RandomizeWeightsEv"
+                  moduleName = "geneticML"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/tkgendro/projects/geneticML/geneticML/organism.h"
+                  timestampString = "564092566.740536"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "114">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

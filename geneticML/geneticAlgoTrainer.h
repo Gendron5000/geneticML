@@ -13,14 +13,31 @@ using BaseType =
     typename std::remove_pointer<
         typename std::result_of<CreateFn()>::type>::type;
     
-using OrganismBase = Organism<BaseType>;
-using pOrganism = std::unique_ptr<OrganismBase>;
-using Organisms = std::vector<pOrganism>;
-    
 using ThreadPool = ctpl::thread_pool;
 
 public:
-    BaseType* GetBestPerformer() { return organisms.at(0)->GetBase().get(); }
+
+	struct Settings
+	{
+        float minWeight = -1.0;
+        float maxWeight = 1.0;
+		bool useIntType = false;
+
+		float epochDeletePercent = 0.5;
+		int numEpoch = 20;
+		int numPopulation = 1000;
+		int randomWeight = 10;
+		int mutationWeight = 20;
+		int childWeight = 20;
+		int childWithMutationWeight = 50;
+        
+        float minMutationPercent = 0.0;
+        float maxMutationPercent = 0.25;
+		
+	};
+
+    BaseType* GetBestPerformer() { return nullptr; }//organisms.at(0)->GetBase().get(); }
+	Settings& GetSettings() { return settings; }
     
     // forbid copying of any kind
 	GeneticAlgoTrainer() = delete;
@@ -37,13 +54,22 @@ public:
     {
     }
 
-	void Run()
+	template<class M, class R>
+	void _Run(M& mutationFn, R& weightFn)
 	{
+using OrganismBase = Organism<BaseType, M, R>;
+using pOrganism = std::unique_ptr<OrganismBase>;
+using Organisms = std::vector<pOrganism>;
+
+		Organisms organisms;
+
         for (int i = 0; i < settings.numPopulation; i++)
         {
             organisms.emplace_back(
                 std::make_unique<OrganismBase>(
-                    std::unique_ptr<BaseType>(createFn()) ) );
+                    std::unique_ptr<BaseType>(createFn()),
+					mutationFn,
+					weightFn ) );
         }
         
 		int numOrganismsDel = settings.epochDeletePercent * settings.numPopulation;
@@ -80,7 +106,7 @@ public:
             double mutationProbability,
             typename OrganismBase::EvolveType evolveType )
         {
-            child->Evolve(parentA, parentB, mutationProbability, evolveType);
+            child->Evolve(parentA, parentB, evolveType);
             child->SetFitness(fitnessFn(*child->GetBase()));
         };
         
@@ -94,7 +120,7 @@ public:
 			Log( "epoch: ", i);
 			Log( "rankings: ");
 
-			organisms.at(0)->DisplayFull(organisms.at(1), organisms.at(2));
+			organisms.at(0)->DisplayFull();//organisms.at(1), organisms.at(2));
 
 			// don't evolve on the last epoch
 			if (i < settings.numEpoch - 1)
@@ -125,26 +151,34 @@ public:
 		{
 			it->DisplayFull();
 		}
+	}
+
+	void Run()
+	{
+		auto mutationRNG = UserRNG::GetRngFn(
+			settings.minMutationPercent, settings.maxMutationPercent);
+
+		if (settings.useIntType)
+		{
+			auto weightRNG = 
+				UserRNG::GetRngFn((int) settings.minWeight, (int) settings.maxWeight);
+
+			_Run(mutationRNG, weightRNG);
+		}
+		else
+		{
+			auto weightRNG = 
+				UserRNG::GetRngFn(settings.minWeight, settings.maxWeight);
+
+			_Run(mutationRNG, weightRNG);
+		}
 	};
 
 private:
-	struct Settings
-	{
-		float epochDeletePercent = 0.5;
-		float minMutationPercent = 0.0;
-		float maxMutationPercent = 0.25;
-		int numEpoch = 20;
-		int numPopulation = 1000;
-		int randomWeight = 10;
-		int mutationWeight = 20;
-		int childWeight = 20;
-		int childWithMutationWeight = 50;
-	};
     
     const FitnessFn& fitnessFn;
     const CreateFn& createFn;
     Settings settings;
-	Organisms organisms;
     ThreadPool workers;
 };
 

@@ -7,10 +7,19 @@
 #include "util.h"
 #include "userRNG.h"
 
-template <class BaseType>
+class OrganismSettings
+{
+	float minMutationPercent = 0.0;
+	float maxMutationPercent = 0.25;
+
+	std::variant<int, double> minWeight;
+	std::variant<int, double> maxWeight;
+};
+
+template <class BaseType, typename MutationDistribution, typename WeightDistribution>
 class Organism
 {
-using ThisType = Organism<BaseType>;
+using ThisType = Organism<BaseType, MutationDistribution, WeightDistribution>;
 using pBaseType = std::unique_ptr<BaseType>;
 
 public:
@@ -27,19 +36,20 @@ public:
     ThisType operator()(const ThisType&& rhs) = delete;
 
 	// setup empty recurrent neural net with the in_createFn() call
-	Organism(pBaseType&& in_basePtr)
+	Organism(pBaseType&& in_basePtr, MutationDistribution& in_mutationFn, WeightDistribution& in_weightFn)
     :pBase(std::forward<pBaseType>(in_basePtr))
+	,mutationDistribution(in_mutationFn)
+	,weightDistribution(in_weightFn)
 	,fitness(0.0)
 	,ID(OrganismIndexID++)
 	{
 		RandomizeWeights();
-		Log("creating org, ", pBase->Parameters().size());
+		Log("created org, ", pBase->Parameters());
 	}
 
 	void Evolve(
                 const ThisType* parentA,
                 const ThisType* parentB,
-                double in_mutProb,
                 EvolveType in_evolveType )
 	{
 		ID = OrganismIndexID++;
@@ -50,7 +60,7 @@ public:
 		}
 		else if (in_evolveType == EvolveType::CloneMutation)
 		{
-			EvolveCloneWithMutation(parentA, in_mutProb);
+			EvolveCloneWithMutation(parentA, mutationDistribution());
 		}
 		else if (in_evolveType == EvolveType::Child)
 		{
@@ -58,7 +68,7 @@ public:
 		}
 		else if (in_evolveType == EvolveType::ChildMutation)
 		{
-			EvolveChildFromParentsWithMutation(parentA, parentB, in_mutProb);
+			EvolveChildFromParentsWithMutation(parentA, parentB, mutationDistribution());
 		}
 	}
 
@@ -74,18 +84,19 @@ public:
 	{
 		Display();
 		((args->Display()), ...);
-		/*
 		auto& weights = pBase->Parameters();
-		for(int i = 0; i < weights.size(); i++)
+		//for(int i = 0; i < weights.size(); i++)
 		{
-			printf("\n%.6f", weights[i]);
-			((printf("\t%.6f", args->pBase->Parameters()[i]) ), ...);
+			Log(weights);
+			//printf("\n%d", weights[i]);
+			//((printf("\t%.6f", args->pBase->Parameters()[i]) ), ...);
 		}
-		*/
 	}
 
 private:
 	pBaseType pBase;
+	MutationDistribution& mutationDistribution;
+	WeightDistribution& weightDistribution;
 	double fitness;
 	long long ID;
 
@@ -142,16 +153,16 @@ private:
 	// randomize all the weights of all the parameters
 	void RandomizeWeights()
 	{
-		auto weightDist = UserRNG::GetRngFn(-2.0, 2.0);
-		pBase->Parameters().transform(
-            [&weightDist](double x){return weightDist();} );
+		for (auto& it : pBase->Parameters())
+		{
+			it = weightDistribution();
+		}
 	}
 
 	void Mutate(double mutationPercentage)
 	{
 		std::unordered_set<int> mutationIndexes;
 		auto& weights = pBase->Parameters();
-		auto weightDist = UserRNG::GetRngFn(-2.0, 2.0);
 
 		int numMutations = (double)mutationPercentage * weights.size();
 		auto mutationIndexDist = UserRNG::GetRngFn(0, (int) weights.size()-1);
@@ -161,14 +172,14 @@ private:
 			mutationIndexes.insert(mutationIndexDist());
 		}
 
-		auto mutateFn = [&weights, &weightDist](int index)
-            { weights[index] *= weightDist(); };
-        
-		std::for_each(mutationIndexes.begin(), mutationIndexes.end(), mutateFn);
+		std::for_each(
+			mutationIndexes.begin(), 
+			mutationIndexes.end(),
+			[&weights, this](int index){ weights[index] = weightDistribution(); } );
 	}
 };
 
-template <class CreateFn>
-long long Organism<CreateFn>::OrganismIndexID = 0;
+template <class BaseType, typename MutationDistribution, typename WeightDistribution>
+long long Organism<BaseType, MutationDistribution, WeightDistribution>::OrganismIndexID = 0;
 
 #endif
